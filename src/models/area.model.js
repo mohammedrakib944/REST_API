@@ -8,15 +8,15 @@ const areaSchema = mongoose.Schema(
       required: true,
     },
     parent: {
-        type: mongoose.SchemaTypes.ObjectId,
+      type: mongoose.SchemaTypes.ObjectId,
     },
     ispOwner: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'IspOwner',
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'IspOwner',
     },
     reseller: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Reseller'
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Reseller',
     },
   },
   {

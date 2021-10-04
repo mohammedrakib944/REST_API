@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { toJSON } = require('./plugins');
-const expendaturePurpose = require('./expendaturePurpose.model')
-
+const expendaturePurpose = require('./expendaturePurpose.model');
 
 const resellerSchema = mongoose.Schema(
   {
@@ -10,69 +9,68 @@ const resellerSchema = mongoose.Schema(
       required: true,
     },
     mobile: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     photo: {
-        type: String,
+      type: String,
     },
     email: {
-        type: String,
-
+      type: String,
     },
     website: {
-        type: String,
+      type: String,
     },
     nid: {
-        type: String,
+      type: String,
     },
     address: {
-        type: String,
+      type: String,
     },
-    
+
     billCollectionType: {
-        type: String,
-        enum: ['prepaid', 'postpaid', 'both'],
-        required: true,
+      type: String,
+      enum: ['prepaid', 'postpaid', 'both'],
+      required: true,
     },
     status: {
-        type: String,
-        enum: ['new', 'active', 'inactive', 'banned', 'deleted'],
-        default: 'new',
+      type: String,
+      enum: ['new', 'active', 'inactive', 'banned', 'deleted'],
+      default: 'new',
     },
     expendaturePurposes: [expendaturePurpose],
     rechargeBalance: {
-        type: Number,
+      type: Number,
     },
     smsRate: {
-        type: Number,
+      type: Number,
     },
     commissionType: {
-        type: String,
-        enum: ['global', 'individual']
+      type: String,
+      enum: ['global', 'individual'],
     },
     commissionRate: {
-        isp: Number,
-        reseller: Number,
+      isp: Number,
+      reseller: Number,
     },
     reference: {
-        name: {
-            type: String,
-        },
-        mobile: {
-            type: String,
-        },
-        type: {
-            type: String,
-        },
-        objid: {
-            type: String,
-        }
+      name: {
+        type: String,
+      },
+      mobile: {
+        type: String,
+      },
+      type: {
+        type: String,
+      },
+      objid: {
+        type: String,
+      },
     },
     ispOwner: {
-        tyep: mongoose.SchemaTypes.ObjectId,
-        ref: 'ispOwner',
-        required: true,
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'ispOwner',
+      required: true,
     },
     user: {
       type: mongoose.SchemaTypes.ObjectId,

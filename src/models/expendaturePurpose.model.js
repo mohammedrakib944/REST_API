@@ -19,6 +19,6 @@ expendaturePurposeSchema.plugin(toJSON);
 /**
  * @typedef ExpendaturePurpose
  */
-const ExpendaturePurpose = mongoose.model('ExpendaturePurpose', expendaturePurposeSchema);
+// const ExpendaturePurpose = mongoose.model('ExpendaturePurpose', expendaturePurposeSchema);
 
-module.exports = ExpendaturePurpose;
+module.exports = expendaturePurposeSchema;

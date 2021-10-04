@@ -16,16 +16,16 @@ const billSchema = mongoose.Schema(
       ref: 'Collector',
     },
     customer: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Customer',
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Customer',
     },
     ispOwner: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'IspOwner',
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'IspOwner',
     },
     reseller: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Reseller'
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Reseller',
     },
   },
   {
