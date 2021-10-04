@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { toJSON } = require('./plugins');
 const expendaturePurpose = require('./expendaturePurpose.model');
+
 const ispOwnerSchema = mongoose.Schema(
   {
     company: {

@@ -16,55 +16,55 @@ const customerSchema = mongoose.Schema(
       required: true,
     },
     photo: {
-        type: String,
+      type: String,
     },
     email: {
-        type: String,
+      type: String,
     },
     nid: {
-        type: String,
+      type: String,
     },
     area: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Area',
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Area',
     },
     status: {
-        type: String,
-        enum: ['unpaid', 'paid', 'overdue'],
+      type: String,
+      enum: ['unpaid', 'paid', 'overdue'],
     },
     balance: {
-        type: Number,
+      type: Number,
     },
     billingCycle: {
-        type: Date,
+      type: Date,
     },
     remarks: {
-        type: String,
+      type: String,
     },
     mikrotik: {
-        username: String,
-        password: String,
+      username: String,
+      password: String,
     },
     userType: {
-        type: String,
-        enum: ['pppoe', 'queue', 'hotspot'],
-        default: 'pppoe',
+      type: String,
+      enum: ['pppoe', 'queue', 'hotspot'],
+      default: 'pppoe',
     },
     billPayType: {
-        type: String,
-        enum: ['prepaid', 'postpaid'],
+      type: String,
+      enum: ['prepaid', 'postpaid'],
     },
     autoDisable: {
-        type: Boolean,
-        default: true,
+      type: Boolean,
+      default: true,
     },
     ispOwner: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'IspOwner',
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'IspOwner',
     },
     reseller: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Reseller'
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Reseller',
     },
   },
   {

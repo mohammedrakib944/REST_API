@@ -11,7 +11,6 @@ const mikrotikPackageSchema = mongoose.Schema(
     ispOwner: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'ispOwner',
-      
     },
     rate: {
       type: Number,
@@ -25,19 +24,19 @@ const mikrotikPackageSchema = mongoose.Schema(
       type: Number,
     },
     config: {
-        type: String,
+      type: String,
     },
     remarks: {
-        type: String,
+      type: String,
     },
     reseller: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Reseller',
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Reseller',
     },
     type: {
-        type: String,
-        enum: ['ispOwner','reseller'],
-    }
+      type: String,
+      enum: ['ispOwner', 'reseller'],
+    },
   },
   {
     timestamps: true,
