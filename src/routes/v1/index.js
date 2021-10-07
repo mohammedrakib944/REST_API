@@ -2,6 +2,7 @@ const express = require('express')
 const authRoute = require('./auth.route')
 const userRoute = require('./user.route')
 const ispOwnerRoute = require('./ispOwner.route')
+const managerRoute = require('./manager.route')
 const docsRoute = require('./docs.route')
 const config = require('../../config/config')
 
@@ -19,6 +20,10 @@ const defaultRoutes = [
   {
     path: '/ispOwner',
     route: ispOwnerRoute,
+  },
+  {
+    path: '/manager',
+    route: managerRoute,
   },
 ]
 

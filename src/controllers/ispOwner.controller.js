@@ -14,7 +14,7 @@ const getIspOwners = catchAsync(async (req, res) => {
 })
 
 const getIspOwner = catchAsync(async (req, res) => {
-  const ispOwner = await ispOwnerService.getIspOwner(req.params.id)
+  const ispOwner = await ispOwnerService.getIspOwnerById(req.params.id)
   if (!ispOwner) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Isp Owner not found')
   }
