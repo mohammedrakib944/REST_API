@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { toJSON } = require('./plugins');
+const mongoose = require('mongoose')
+const { toJSON } = require('./plugins')
 
 const customerSchema = mongoose.Schema(
   {
@@ -70,14 +70,14 @@ const customerSchema = mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
 // add plugin that converts mongoose to json
-customerSchema.plugin(toJSON);
+customerSchema.plugin(toJSON)
 
 /**
  * @typedef Customer
  */
-const Customer = mongoose.model('Customer', customerSchema);
+const Customer = mongoose.model('Customer', customerSchema)
 
-module.exports = Customer;
+module.exports = Customer

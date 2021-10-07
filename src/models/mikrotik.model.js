@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { toJSON } = require('./plugins');
+const mongoose = require('mongoose')
+const { toJSON } = require('./plugins')
 
 const mikrotikSchema = mongoose.Schema(
   {
@@ -28,14 +28,14 @@ const mikrotikSchema = mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
 // add plugin that converts mongoose to json
-mikrotikSchema.plugin(toJSON);
+mikrotikSchema.plugin(toJSON)
 
 /**
  * @typedef Mikrotik
  */
-const Mikrotik = mongoose.model('Mikrotik', mikrotikSchema);
+const Mikrotik = mongoose.model('Mikrotik', mikrotikSchema)
 
-module.exports = Mikrotik;
+module.exports = Mikrotik

@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { toJSON } = require('./plugins');
+const mongoose = require('mongoose')
+const { toJSON } = require('./plugins')
 
 const collectorSchema = mongoose.Schema(
   {
@@ -67,14 +67,14 @@ const collectorSchema = mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
 // add plugin that converts mongoose to json
-collectorSchema.plugin(toJSON);
+collectorSchema.plugin(toJSON)
 
 /**
  * @typedef Collector
  */
-const Collector = mongoose.model('Collector', collectorSchema);
+const Collector = mongoose.model('Collector', collectorSchema)
 
-module.exports = Collector;
+module.exports = Collector

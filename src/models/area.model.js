@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { toJSON } = require('./plugins');
+const mongoose = require('mongoose')
+const { toJSON } = require('./plugins')
 
 const areaSchema = mongoose.Schema(
   {
@@ -22,14 +22,14 @@ const areaSchema = mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
 // add plugin that converts mongoose to json
-areaSchema.plugin(toJSON);
+areaSchema.plugin(toJSON)
 
 /**
  * @typedef Area
  */
-const Area = mongoose.model('Area', areaSchema);
+const Area = mongoose.model('Area', areaSchema)
 
-module.exports = Area;
+module.exports = Area

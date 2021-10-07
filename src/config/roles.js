@@ -6,12 +6,12 @@ const allRoles = {
   collector: [],
   lineman: [],
   manager: [],
-};
+}
 
-const roles = Object.keys(allRoles);
-const roleRights = new Map(Object.entries(allRoles));
+const roles = Object.keys(allRoles)
+const roleRights = new Map(Object.entries(allRoles))
 
 module.exports = {
   roles,
   roleRights,
-};
+}

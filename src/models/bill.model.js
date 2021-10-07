@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { toJSON } = require('./plugins');
+const mongoose = require('mongoose')
+const { toJSON } = require('./plugins')
 
 const billSchema = mongoose.Schema(
   {
@@ -31,14 +31,14 @@ const billSchema = mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
 // add plugin that converts mongoose to json
-billSchema.plugin(toJSON);
+billSchema.plugin(toJSON)
 
 /**
  * @typedef Bill
  */
-const Bill = mongoose.model('Bill', billSchema);
+const Bill = mongoose.model('Bill', billSchema)
 
-module.exports = Bill;
+module.exports = Bill

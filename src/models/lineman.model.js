@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { toJSON } = require('./plugins');
+const mongoose = require('mongoose')
+const { toJSON } = require('./plugins')
 
 const linemanSchema = mongoose.Schema(
   {
@@ -67,14 +67,14 @@ const linemanSchema = mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
 // add plugin that converts mongoose to json
-linemanSchema.plugin(toJSON);
+linemanSchema.plugin(toJSON)
 
 /**
  * @typedef Lineman
  */
-const Lineman = mongoose.model('Lineman', linemanSchema);
+const Lineman = mongoose.model('Lineman', linemanSchema)
 
-module.exports = Lineman;
+module.exports = Lineman

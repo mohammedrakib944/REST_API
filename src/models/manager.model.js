@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { toJSON } = require('./plugins');
+const mongoose = require('mongoose')
+const { toJSON } = require('./plugins')
 
 const managerSchema = mongoose.Schema(
   {
@@ -67,14 +67,14 @@ const managerSchema = mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
 // add plugin that converts mongoose to json
-managerSchema.plugin(toJSON);
+managerSchema.plugin(toJSON)
 
 /**
  * @typedef Manager
  */
-const Manager = mongoose.model('Manager', managerSchema);
+const Manager = mongoose.model('Manager', managerSchema)
 
-module.exports = Manager;
+module.exports = Manager

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const { toJSON } = require('./plugins');
-const expendaturePurpose = require('./expendaturePurpose.model');
+const mongoose = require('mongoose')
+const { toJSON } = require('./plugins')
+const expendaturePurpose = require('./expendaturePurpose.model')
 
 const resellerSchema = mongoose.Schema(
   {
@@ -81,14 +81,14 @@ const resellerSchema = mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
 // add plugin that converts mongoose to json
-resellerSchema.plugin(toJSON);
+resellerSchema.plugin(toJSON)
 
 /**
  * @typedef Reseller
  */
-const Reseller = mongoose.model('Reseller', resellerSchema);
+const Reseller = mongoose.model('Reseller', resellerSchema)
 
-module.exports = Reseller;
+module.exports = Reseller

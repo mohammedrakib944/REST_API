@@ -1,8 +1,8 @@
-const dotenv = require('dotenv');
-const path = require('path');
-const Joi = require('joi');
+const dotenv = require('dotenv')
+const path = require('path')
+const Joi = require('joi')
 
-dotenv.config({ path: path.join(__dirname, '../../.env') });
+dotenv.config({ path: path.join(__dirname, '../../.env') })
 
 const envVarsSchema = Joi.object()
   .keys({
@@ -24,12 +24,12 @@ const envVarsSchema = Joi.object()
     SMTP_PASSWORD: Joi.string().description('password for email server'),
     EMAIL_FROM: Joi.string().description('the from field in the emails sent by the app'),
   })
-  .unknown();
+  .unknown()
 
-const { value: envVars, error } = envVarsSchema.prefs({ errors: { label: 'key' } }).validate(process.env);
+const { value: envVars, error } = envVarsSchema.prefs({ errors: { label: 'key' } }).validate(process.env)
 
 if (error) {
-  throw new Error(`Config validation error: ${error.message}`);
+  throw new Error(`Config validation error: ${error.message}`)
 }
 
 module.exports = {
@@ -61,4 +61,4 @@ module.exports = {
     },
     from: envVars.EMAIL_FROM,
   },
-};
+}

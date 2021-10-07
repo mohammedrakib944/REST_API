@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const { toJSON } = require('./plugins');
-const expendaturePurpose = require('./expendaturePurpose.model');
+const mongoose = require('mongoose')
+const { toJSON } = require('./plugins')
+const expendaturePurpose = require('./expendaturePurpose.model')
 
 const ispOwnerSchema = mongoose.Schema(
   {
@@ -128,14 +128,14 @@ const ispOwnerSchema = mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
 // add plugin that converts mongoose to json
-ispOwnerSchema.plugin(toJSON);
+ispOwnerSchema.plugin(toJSON)
 
 /**
  * @typedef ispOwner
  */
-const IspOwner = mongoose.model('IspOwner', ispOwnerSchema);
+const IspOwner = mongoose.model('IspOwner', ispOwnerSchema)
 
-module.exports = IspOwner;
+module.exports = IspOwner
