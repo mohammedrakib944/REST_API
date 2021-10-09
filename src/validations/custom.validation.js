@@ -15,7 +15,14 @@ const password = (value, helpers) => {
   return value
 }
 
+const mobile = (value, helpers) => {
+  if (!value.match(/^01[3456789][\d]{8}/)) {
+    return helpers.message('Input a valid phone number')
+  }
+}
+
 module.exports = {
   objectId,
   password,
+  mobile,
 }

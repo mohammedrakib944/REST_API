@@ -5,24 +5,30 @@ const collectorSchema = mongoose.Schema(
   {
     name: {
       type: String,
+      max: 50,
+      trim: true,
       required: true,
     },
     mobile: {
       type: String,
+      trim: true,
       required: true,
     },
     address: {
       type: String,
-      required: true,
+      max: 100,
+      trim: true,
     },
     photo: {
       type: String,
     },
     email: {
       type: String,
+      trim: true,
     },
     nid: {
       type: String,
+      max: 15,
     },
     areas: [
       {
@@ -35,7 +41,7 @@ const collectorSchema = mongoose.Schema(
       enum: ['active', 'inactive'],
       default: 'active',
     },
-    permissions: [],
+    permissions: {},
     reference: {
       name: {
         type: String,
@@ -53,7 +59,6 @@ const collectorSchema = mongoose.Schema(
     user: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'User',
-      required: true,
     },
     ispOwner: {
       type: mongoose.SchemaTypes.ObjectId,

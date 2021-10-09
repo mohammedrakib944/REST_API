@@ -6,50 +6,64 @@ const ispOwnerSchema = mongoose.Schema(
   {
     company: {
       type: String,
-      required: true,
-      index: true,
+      required: [true, "Company name can't be empty"],
+      min: 3,
+      max: [50, 'Company name must be less than 50 character'],
+      trim: true,
     },
     user: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'User',
-      required: true,
     },
     name: {
       type: String,
       required: true,
+      max: 50,
+      trim: true,
     },
     mobile: {
       type: String,
       required: true,
+      trim: true,
     },
     signature: {
       type: String,
       required: true,
+      max: 35,
+      trim: true,
     },
     manager: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'Manager',
-      required: true,
     },
     billCollectionType: {
       type: String,
       enum: ['prepaid', 'postpaid', 'both'],
       required: true,
+      default: 'prepaid',
     },
     photo: {
       type: String,
     },
     email: {
       type: String,
+      required: true,
+      trim: true,
     },
     website: {
       type: String,
+      max: 35,
+      trim: true,
     },
     nid: {
       type: String,
+      required: true,
+      max: 15,
     },
     address: {
       type: String,
+      max: 100,
+      trim: true,
     },
     reference: {
       name: {
@@ -60,6 +74,8 @@ const ispOwnerSchema = mongoose.Schema(
       },
       type: {
         type: String,
+        enum: ['staff', 'distributor', 'other', 'client'],
+        default: 'other',
       },
       objId: {
         type: String,
@@ -79,33 +95,55 @@ const ispOwnerSchema = mongoose.Schema(
     ],
     smsBalance: {
       type: Number,
+      required: true,
+      default: 0,
     },
     smsRate: {
       type: Number,
+      required: true,
+      default: 0.25,
     },
     smsType: {
       type: String,
-      enum: ['masking', 'nonMasking'],
+      enum: ['masking', 'nonMasking', 'other'],
+      default: 'nonMasking',
+    },
+    smsGateway: {
+      type: String,
+      max: 300,
+      trim: true,
+    },
+    maskingId: {
+      type: String,
+      max: 11,
+      trim: true,
     },
     settings: {
       invoiceHeader: {
         type: String,
+        trim: true,
+        max: 100,
       },
       invoiceFooter: {
         type: String,
+        trim: true,
+        max: 100,
       },
     },
     bpSettings: {
       package: {
         type: String,
-        enum: ['Basic'],
+        enum: ['Basic', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond', 'Old', 'P1', 'P2', 'P3', 'P4'],
         default: 'Basic',
+        required: true,
       },
       customerLimit: {
         type: Number,
+        required: true,
       },
       packageRate: {
         type: Number,
+        required: true,
       },
       hasReseller: {
         type: Boolean,
@@ -115,7 +153,7 @@ const ispOwnerSchema = mongoose.Schema(
         type: Boolean,
         default: false,
       },
-      complaintManagement: {
+      complainManagement: {
         type: Boolean,
         default: false,
       },

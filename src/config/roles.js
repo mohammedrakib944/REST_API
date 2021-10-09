@@ -1,6 +1,6 @@
 const allRoles = {
-  user: [],
   admin: ['getUsers', 'manageUsers'],
+  superadmin: [],
   ispOwner: [],
   reseller: [],
   collector: [],

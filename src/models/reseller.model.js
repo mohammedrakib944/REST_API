@@ -7,10 +7,13 @@ const resellerSchema = mongoose.Schema(
     name: {
       type: String,
       required: true,
+      max: 50,
+      trim: true,
     },
     mobile: {
       type: String,
       required: true,
+      trim: true,
     },
     photo: {
       type: String,
@@ -26,6 +29,8 @@ const resellerSchema = mongoose.Schema(
     },
     address: {
       type: String,
+      max: 50,
+      trim: true,
     },
 
     billCollectionType: {
@@ -41,9 +46,11 @@ const resellerSchema = mongoose.Schema(
     expendaturePurposes: [expendaturePurpose],
     rechargeBalance: {
       type: Number,
+      default: 0,
     },
     smsRate: {
       type: Number,
+      default: 0.25,
     },
     commissionType: {
       type: String,
@@ -67,15 +74,14 @@ const resellerSchema = mongoose.Schema(
         type: String,
       },
     },
+    permission: {},
     ispOwner: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'ispOwner',
-      required: true,
     },
     user: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'User',
-      required: true,
     },
   },
   {

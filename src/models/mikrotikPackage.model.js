@@ -3,14 +3,18 @@ const { toJSON } = require('./plugins')
 
 const mikrotikPackageSchema = mongoose.Schema(
   {
-    mikrotik: {
+    profile: {
       type: String,
       required: true,
-      index: true,
+    },
+    mikrotik: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Mikrotik',
+      required: true,
     },
     ispOwner: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'ispOwner',
+      ref: 'IspOwner',
     },
     rate: {
       type: Number,

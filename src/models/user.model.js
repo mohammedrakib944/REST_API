@@ -1,25 +1,19 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const { toJSON, paginate } = require('./plugins')
 const { roles } = require('../config/roles')
 
 const userSchema = mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    email: {
+    mobile: {
       type: String,
       required: true,
       unique: true,
       trim: true,
-      lowercase: true,
+      max: 11,
       validate(value) {
-        if (!validator.isEmail(value)) {
-          throw new Error('Invalid email')
+        if (!value.match(/^01[3456789][\d]{8}/)) {
+          throw new Error('Invalid phone Number')
         }
       },
     },
@@ -38,11 +32,10 @@ const userSchema = mongoose.Schema(
     role: {
       type: String,
       enum: roles,
-      default: 'user',
+      default: 'ispOwner',
     },
-    isEmailVerified: {
-      type: Boolean,
-      default: false,
+    passwordChangedAt: {
+      type: Date,
     },
   },
   {
@@ -55,15 +48,19 @@ userSchema.plugin(toJSON)
 userSchema.plugin(paginate)
 
 /**
- * Check if email is taken
- * @param {string} email - The user's email
+ * Check if mobile is taken
+ * @param {string} mobile - The user's mobile
  * @param {ObjectId} [excludeUserId] - The id of the user to be excluded
  * @returns {Promise<boolean>}
  */
-userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
-  const user = await this.findOne({ email, _id: { $ne: excludeUserId } })
+userSchema.statics.isMobileTaken = async function (mobile, excludeUserId) {
+  const user = await this.findOne({ mobile, _id: { $ne: excludeUserId } })
   return !!user
 }
+// userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
+//   const user = await this.findOne({ email, _id: { $ne: excludeUserId } })
+//   return !!user
+// }
 
 /**
  * Check if password matches the user's password
@@ -78,7 +75,7 @@ userSchema.methods.isPasswordMatch = async function (password) {
 userSchema.pre('save', async function (next) {
   const user = this
   if (user.isModified('password')) {
-    user.password = await bcrypt.hash(user.password, 8)
+    user.password = await bcrypt.hash(user.password, 10)
   }
   next()
 })

@@ -6,7 +6,8 @@ const mikrotikSchema = mongoose.Schema(
     host: {
       type: String,
       required: true,
-      index: true,
+      max: 15,
+      trim: true,
     },
     ispOwner: {
       type: mongoose.SchemaTypes.ObjectId,
@@ -20,9 +21,14 @@ const mikrotikSchema = mongoose.Schema(
     port: {
       type: String,
       required: true,
+      max: 5,
+      trim: true,
     },
     name: {
       type: String,
+      trim: true,
+      max: 20,
+      required: true,
     },
   },
   {

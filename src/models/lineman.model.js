@@ -6,36 +6,34 @@ const linemanSchema = mongoose.Schema(
     name: {
       type: String,
       required: true,
+      max: 50,
+      trim: true,
     },
     mobile: {
       type: String,
       required: true,
+      trim: true,
     },
     address: {
       type: String,
-      required: true,
+      max: 100,
     },
     photo: {
       type: String,
     },
     email: {
       type: String,
+      trim: true,
     },
     nid: {
       type: String,
     },
-    areas: [
-      {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Area',
-      },
-    ],
     status: {
       type: String,
       enum: ['active', 'inactive'],
       default: 'active',
     },
-    permissions: [],
+    permissions: {},
     reference: {
       name: {
         type: String,
@@ -53,7 +51,6 @@ const linemanSchema = mongoose.Schema(
     user: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'User',
-      required: true,
     },
     ispOwner: {
       type: mongoose.SchemaTypes.ObjectId,

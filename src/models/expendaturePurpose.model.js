@@ -6,6 +6,7 @@ const expendaturePurposeSchema = mongoose.Schema(
     name: {
       type: String,
       required: true,
+      max: 20,
     },
   },
   {
