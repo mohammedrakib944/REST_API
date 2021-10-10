@@ -58,18 +58,12 @@ const managerSchema = mongoose.Schema(
         type: Boolean,
         default: true,
       },
-      monthlyFeeEditIncrement: {
-        type: Boolean,
-        default: true,
-      },
+
       billEdit: {
         type: Boolean,
         default: true,
       },
-      billEditIncrement: {
-        type: Boolean,
-        default: true,
-      },
+
       billPosting: {
         type: Boolean,
         default: true,
@@ -119,6 +113,10 @@ const managerSchema = mongoose.Schema(
         default: true,
       },
       viewCollectorReport: {
+        type: Boolean,
+        default: true,
+      },
+      fileExport: {
         type: Boolean,
         default: true,
       },

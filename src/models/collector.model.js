@@ -41,7 +41,57 @@ const collectorSchema = mongoose.Schema(
       enum: ['active', 'inactive'],
       default: 'active',
     },
-    permissions: {},
+    permissions: {
+      customerAdd: {
+        type: Boolean,
+        default: true,
+      },
+
+      customerEdit: {
+        type: Boolean,
+        default: true,
+      },
+
+      customerMobileEdit: {
+        type: Boolean,
+        default: true,
+      },
+
+      billPosting: {
+        type: Boolean,
+        default: true,
+      },
+
+      webLogin: {
+        type: Boolean,
+        default: true,
+      },
+      viewCustomerList: {
+        type: Boolean,
+        default: true,
+      },
+      sendSMS: {
+        type: Boolean,
+        default: true,
+      },
+      customerActivate: {
+        type: Boolean,
+        default: true,
+      },
+      customerDeactivate: {
+        type: Boolean,
+        default: true,
+      },
+      billPrint: {
+        type: Boolean,
+        default: true,
+      },
+
+      viewTotalReport: {
+        type: Boolean,
+        default: true,
+      },
+    },
     reference: {
       name: {
         type: String,

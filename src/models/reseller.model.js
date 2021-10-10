@@ -74,7 +74,89 @@ const resellerSchema = mongoose.Schema(
         type: String,
       },
     },
-    permission: {},
+    permission: {
+      customerAdd: {
+        type: Boolean,
+        default: true,
+      },
+
+      customerEdit: {
+        type: Boolean,
+        default: true,
+      },
+
+      customerDelete: {
+        type: Boolean,
+        default: true,
+      },
+
+      monthlyFeeEdit: {
+        type: Boolean,
+        default: true,
+      },
+
+      billEdit: {
+        type: Boolean,
+        default: true,
+      },
+
+      billPosting: {
+        type: Boolean,
+        default: true,
+      },
+      accounts: {
+        type: Boolean,
+        default: true,
+      },
+      inventory: {
+        type: Boolean,
+        default: true,
+      },
+      webLogin: {
+        type: Boolean,
+        default: true,
+      },
+      viewCustomerList: {
+        type: Boolean,
+        default: true,
+      },
+      sendSMS: {
+        type: Boolean,
+        default: true,
+      },
+      customerActivate: {
+        type: Boolean,
+        default: true,
+      },
+      customerDeactivate: {
+        type: Boolean,
+        default: true,
+      },
+      print: {
+        type: Boolean,
+        default: true,
+      },
+      collectorAdd: {
+        type: Boolean,
+        default: true,
+      },
+      collectorEdit: {
+        type: Boolean,
+        default: true,
+      },
+      viewTotalReport: {
+        type: Boolean,
+        default: true,
+      },
+      viewCollectorReport: {
+        type: Boolean,
+        default: true,
+      },
+      fileExport: {
+        type: Boolean,
+        default: true,
+      },
+    },
     ispOwner: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'ispOwner',
