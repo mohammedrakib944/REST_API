@@ -25,10 +25,14 @@ const ispOwnerSchema = mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+      validate(value) {
+        if (!value.match(/^01[3456789][\d]{8}/)) {
+          throw new Error('Invalid phone Number')
+        }
+      },
     },
     signature: {
       type: String,
-      required: true,
       max: 35,
       trim: true,
     },
@@ -57,7 +61,6 @@ const ispOwnerSchema = mongoose.Schema(
     },
     nid: {
       type: String,
-      required: true,
       max: 15,
     },
     address: {
@@ -131,7 +134,7 @@ const ispOwnerSchema = mongoose.Schema(
       },
     },
     bpSettings: {
-      package: {
+      pack: {
         type: String,
         enum: ['Basic', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond', 'Old', 'P1', 'P2', 'P3', 'P4'],
         default: 'Basic',

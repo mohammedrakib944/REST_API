@@ -4,14 +4,12 @@ const ApiError = require('../utils/ApiError')
 
 /**
  * Create a user
- * @param {Object} userBody
+ * @param {Object} user
  * @returns {Promise<User>}
  */
-const createUser = async (userBody) => {
-  if (await User.isEmailTaken(userBody.email)) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken')
-  }
-  return User.create(userBody)
+const createUser = async (user) => {
+  const newUser = await User.create(user)
+  return newUser
 }
 
 /**

@@ -1,11 +1,15 @@
 const Joi = require('joi')
-const { password } = require('./custom.validation')
+const { password, mobile } = require('./custom.validation')
 
 const register = {
   body: Joi.object().keys({
+    company: Joi.string().min(3).max(50).required(),
     email: Joi.string().required().email(),
-    password: Joi.string().required().custom(password),
-    name: Joi.string().required(),
+    mobile: Joi.string().required().custom(mobile),
+    name: Joi.string().max(50).required(),
+    pack: Joi.string()
+      .required()
+      .valid('Basic', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond', 'Old', 'P1', 'P2', 'P3', 'P4'),
   }),
 }
 

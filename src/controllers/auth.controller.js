@@ -1,11 +1,76 @@
 const httpStatus = require('http-status')
 const catchAsync = require('../utils/catchAsync')
-const { authService, userService, tokenService, emailService } = require('../services')
+const {
+  authService,
+  userService,
+  tokenService,
+  emailService,
+  paymentService,
+  ispOwnerService,
+  registerService,
+  invoiceService,
+} = require('../services')
+const { genPassword } = require('../utils/genPassword')
+const logger = require('../config/logger')
 
 const register = catchAsync(async (req, res) => {
-  const user = await userService.createUser(req.body)
-  const tokens = await tokenService.generateAuthTokens(user)
-  res.status(httpStatus.CREATED).send({ user, tokens })
+  const registration = await registerService.createRegister(req.body)
+  const paymentUrl = await paymentService.genRegisterPaymentUrl(req.body, registration._id)
+  res.status(httpStatus.CREATED).send({ paymentUrl })
+})
+
+const registerSuccess = catchAsync(async (req, res) => {
+  /*
+    todo: validate successful payment
+    todo: create user
+    todo: send user a success message with his mobile as username and generated 8 digit password
+    todo: update invoice payment status  
+   */
+  // const validationObject = { val_id: req.body.val_id }
+  // const status = paymentService.validateRegisterPayment(validationObject)
+  res.send({ message: 'Registration successful' })
+})
+
+const registerFail = catchAsync(async (req, res) => {
+  res.send({ message: 'Registration Failed' })
+})
+
+const registerCancel = catchAsync(async (req, res) => {
+  res.send({ message: 'Registration Cancelled' })
+})
+
+const registerIPN = catchAsync(async (req, res) => {
+  const validationObject = { val_id: req.body.val_id }
+  const result = await paymentService.validateRegisterPayment(validationObject)
+
+  const { status, amount, name, email, mobile, company, referance, bpSettings, registrationId } = result
+  const password = genPassword()
+  logger.info(password)
+
+  if (status === 'VALID' || status === 'VALIDATED') {
+    const user = await userService.createUser({ mobile, password })
+    await registerService.updateRegisterStatus(registrationId, 'success')
+    await ispOwnerService.createIspOwner({
+      name,
+      email,
+      mobile,
+      company,
+      referance,
+      user: user._id,
+      bpSettings,
+    })
+    await invoiceService.createInvoice({
+      amount,
+      user: user._id,
+      type: 'registration',
+      status: 'paid',
+      paymentThrough: 'sslcommerz',
+    })
+  }
+
+  // send sms
+
+  res.send({ message: 'Payment Validated' })
 })
 
 const login = catchAsync(async (req, res) => {
@@ -49,6 +114,10 @@ const verifyEmail = catchAsync(async (req, res) => {
 
 module.exports = {
   register,
+  registerSuccess,
+  registerFail,
+  registerCancel,
+  registerIPN,
   login,
   logout,
   refreshTokens,

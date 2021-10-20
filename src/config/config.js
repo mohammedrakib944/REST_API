@@ -8,6 +8,10 @@ const envVarsSchema = Joi.object()
   .keys({
     NODE_ENV: Joi.string().valid('production', 'development', 'test').required(),
     PORT: Joi.number().default(3000),
+    STORE_ID: Joi.string().description('sslcommerz store id'),
+    STORE_PASSWD: Joi.string().description('sslcommerz store password'),
+    CLIENT_URL: Joi.string().description('client url'),
+    SERVER_URL: Joi.string().description('server url'),
     MONGODB_URL: Joi.string().required().description('Mongo DB url'),
     JWT_SECRET: Joi.string().required().description('JWT secret key'),
     JWT_ACCESS_EXPIRATION_MINUTES: Joi.number().default(30).description('minutes after which access tokens expire'),
@@ -35,6 +39,14 @@ if (error) {
 module.exports = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
+  store: {
+    id: envVars.STORE_ID,
+    passwd: envVars.STORE_PASSWD,
+  },
+  url: {
+    client: envVars.CLIENT_URL,
+    server: envVars.SERVER_URL,
+  },
   mongoose: {
     url: envVars.MONGODB_URL + (envVars.NODE_ENV === 'test' ? '-test' : ''),
     options: {

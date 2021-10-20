@@ -3,7 +3,8 @@ const { IspOwner } = require('../models')
 const ApiError = require('../utils/ApiError')
 
 const createIspOwner = async (ispOwner) => {
-  return IspOwner.create(ispOwner)
+  const owner = await IspOwner.create(ispOwner)
+  return owner
 }
 
 const getIspOwners = async () => {
